@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "Routines/applicationSteps.h"
 
 int main() {
-    printf("Hello, World!\n");
+    mainMenu();
     return 0;
 }

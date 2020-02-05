@@ -4,6 +4,13 @@
 
 #ifndef PROGETTOFINALEPOI_STRUCTURES_H
 #define PROGETTOFINALEPOI_STRUCTURES_H
+
+#define SHORT_STRING 64
+#define MEDIUM_STRING 256
+
+/**
+ * Declaring the enumerator used to store the POI categories
+ */
 typedef enum  {
     beach,
     Mountain,
@@ -15,14 +22,18 @@ typedef enum  {
     Other
 } CategoryPoi;
 
+/**
+ *  most important Structure of the project (POI)
+ */
 typedef struct {
-    char name[64];
+    char name[SHORT_STRING];
     double latitude;
     double longitude;
     double altitude;
-    char municipality[64];
-    char description[256];
+    char municipality[SHORT_STRING];
+    char description[MEDIUM_STRING];
     CategoryPoi category;
-}
-        PointOfInterest;
+} PointOfInterest;
+
+
 #endif //PROGETTOFINALEPOI_STRUCTURES_H
