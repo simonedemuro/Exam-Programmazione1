@@ -6,16 +6,21 @@
 
 /**
  * Open a fileStream
- * @param nomeFile is the fileName you wish to open
+ * @param fileName is the fileName you wish to open
  * @return file pointer (open stream)
  */
-FILE * openStream(char *nomeFile){
-    // attempt to open a stream to nomeFile
-    FILE *fp = fopen(nomeFile, "w");
+FILE * openStream(char *fileName){
+    // Filepath is the concatenation of the working directory and the file name provided by the user
+    char filePath[100];
+    strcpy(filePath, CONF_WORKING_PATH);
+    strcat(filePath, fileName);
+
+    printf("%s", filePath);
+    FILE *fp = fopen(filePath, "w");
 
     // if case of error alert the user
     if(fp == NULL){
-        printf("An error occurred opening the file %s (File Pointer Exception)", nomeFile);
+        printf("An error occurred opening the file %s (File Pointer Exception)", filePath);
         getchar();
         handledError();
     }

@@ -15,8 +15,10 @@
 1. Load existing project\n\
 2. New Project\n"
 
-#define STR_1_NEW_PROJECT "Type the project name you want to create"
+#define STR_1_NEW_PROJECT "Type the project name you want to create\n"
 
+#define STR_1_LOAD_PROJECT "Type the project name you want to load\nif it won't exist a new one will be created"
+#define STR_1_LOAD_PROJECT_LIST_ALL_FILES "Here is the list of the projects in your local storage: "
 
 
 #endif //PROGETTOFINALEPOI_STRINGSTATIC_H

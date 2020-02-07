@@ -21,7 +21,7 @@ int getAnswerFromUser(int maxOptionAvailable){
         printf(STR_CURSOR);
         scanf("%d", &userAnswer);
         // checks if the value is between 1 and the maximum option available for this command
-        invalidInputEntered = userAnswer < 0 || userAnswer >= maxOptionAvailable;
+        invalidInputEntered = userAnswer < 0 || userAnswer > maxOptionAvailable;
         if(invalidInputEntered){
             printf(STR_INVALID_INPUT_WARNING);
         }
@@ -29,6 +29,10 @@ int getAnswerFromUser(int maxOptionAvailable){
     //than returns a certainly valid input
     return userAnswer;
 }
+
+
+//Todo: refactor this mess and conditionally compile the functions you want to have depending on the operative system
+//instead of repeating the condition inside them
 
 /**
  * Clear the console with the right system call based on the OS currently in use at compile time
@@ -47,6 +51,31 @@ void cleanConsole(){
 #endif
 }
 
+/**
+ *
+ */
+void printFilesLocallyStored(){
+    char command[100];
+
+    // set the correct syscall for the os in use
+#ifdef __linux__
+    strcpy(command, "ls ");
+#elif _WIN32
+    strcpy(command, "DIR ");
+#else
+    // todo: not sure how to list on mac
+    // otherwise we are under mac
+    strcpy(command, "ls ");
+#endif
+
+    // passes the saving path to the command as an argument
+    strcat(command, CONF_WORKING_PATH_FOLDER_NAME);
+
+    printf(command);
+    // runs the system command
+    system(command);
+}
+
 
 /**
  *  This function prints a message to inform the user that the worst happened and kindly invites the user to
@@ -56,5 +85,5 @@ void handledError(){
     cleanConsole();
     printf("An Error or unexpected condition happened, please press a key to restart the application, if the error persists contact the support");
     getchar();
-    mainMenu();
+    startingMenu();
 }

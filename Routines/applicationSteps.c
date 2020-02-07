@@ -9,7 +9,7 @@
  * Step 0
  * This routine represent the step 0 aka Start Menu
  */
-void mainMenu(){
+void startingMenu(){
     printf(STR_MAIN_MENU);
     int userAnswer = getAnswerFromUser(2);
 
@@ -21,6 +21,7 @@ void mainMenu(){
             break;
         case 2:
             loadProjectMenu();
+            break;
         default:
             // every other scenario must not happen, handling just in case
             handledError();
@@ -36,19 +37,10 @@ void mainMenu(){
  *  This step will automatically lead to Step 2
  */
 void newProjectMenu(){
-    // declaring the variable to hold the fileName that will be generated
-    char fileName[SHORT_STRING];
     // clean the console for better visualization
     cleanConsole();
-    // prompt the awareness message asking for the filename
-    printf(STR_1_NEW_PROJECT);
-
-    // read user input spaces included the getChar is intended to free the buffer
-    // Todo: find a fancier way to free the buffer
-    getchar();
-    scanf("%[^\n]", fileName);
-    // opens a stream to the file
-    FILE * fileStream = openStream(fileName);
+    // Ask the file name
+    FILE* fileStream = printMessageAndOpenStream(STR_1_NEW_PROJECT);
 }
 
 /**
@@ -59,6 +51,33 @@ void newProjectMenu(){
  *  This step will automatically lead to Step 2
  */
 void loadProjectMenu(){
+    printf(STR_1_LOAD_PROJECT_LIST_ALL_FILES);
+    printFilesLocallyStored();
+    FILE* fileStream = printMessageAndOpenStream(STR_1_LOAD_PROJECT);
+}
 
+void mainMenu(char* fileName, FILE* fileStream){
+    printf("-.m,òplnb3");
+}
+
+/**
+ * Since new project and load project are very similar, this function provides a common template to avoid
+ * code repetitions.
+ * @param message is the message is gonna be prompted to user
+ * @return the pointer to the file typed by the user
+ */
+FILE* printMessageAndOpenStream(char* message){
+    // declaring the variable to hold the fileName that will be generated
+    char fileName[SHORT_STRING];
+    // prompt the awareness message asking for the filename
+    printf(STR_1_NEW_PROJECT);
+
+    // read user input spaces included the getChar is intended to free the buffer
+    // Todo: find a fancier way to free the buffer
+    getchar();
+    scanf("%[^\n]", fileName);
+    // opens a stream to the file
+    FILE * fileStream = openStream(fileName);
+    return fileStream;
 }
 

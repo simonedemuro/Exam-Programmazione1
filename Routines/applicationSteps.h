@@ -14,8 +14,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void mainMenu();
+void startingMenu();
 void newProjectMenu();
 void loadProjectMenu();
+FILE* printMessageAndOpenStream(char* message);
+void mainMenu(char* fileName, FILE* fileStream);
 
 #endif //PROGETTOFINALEPOI_APPLICATIONSTEPS_H

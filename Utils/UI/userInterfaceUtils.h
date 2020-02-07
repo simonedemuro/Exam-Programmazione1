@@ -12,5 +12,6 @@
 int getAnswerFromUser(int maxOptionAvailable);
 void handledError();
 void cleanConsole();
+void printFilesLocallyStored();
 
 #endif //PROGETTOFINALEPOI_USERINTERFACEUTILS_H

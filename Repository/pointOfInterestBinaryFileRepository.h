@@ -11,7 +11,11 @@
 #include <stdbool.h>
 #include "../Utils/UI/userInterfaceUtils.h"
 
-FILE * openStream(char *nomeFile);
+// Config Section:
+#define CONF_WORKING_PATH "Saves/"
+#define CONF_WORKING_PATH_FOLDER_NAME "Saves"
+
+FILE * openStream(char *fileName);
 
 
 #endif //PROGETTOFINALEPOI_POINTOFINTERESTBINARYFILEREPOSITORY_H
