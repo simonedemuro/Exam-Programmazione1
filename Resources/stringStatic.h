@@ -11,7 +11,7 @@
 
 #define STR_INVALID_INPUT_WARNING "please enter a valid input\n"
 #define STR_CURSOR "__>"
-#define STR_MAIN_MENU "Welcome to Point Of Interest Handler, please chose an option\n\
+#define STR_START_MENU "Welcome to Point Of Interest Handler, please chose an option\n\
 1. Load existing project\n\
 2. New Project\n"
 
@@ -19,6 +19,9 @@
 
 #define STR_1_LOAD_PROJECT "Type the project name you want to load\nif it won't exist a new one will be created"
 #define STR_1_LOAD_PROJECT_LIST_ALL_FILES "Here is the list of the projects in your local storage: "
+
+#define STR_2_MAIN_MENU "Type the operation number you want to perform:Type the operation number you want to perform:\n\
+1. List All\n2. Search\n3. Insert New\n4. Edit an already existing\n5. Delete an already existing\n6. Go back Home"
 
 
 #endif //PROGETTOFINALEPOI_STRINGSTATIC_H

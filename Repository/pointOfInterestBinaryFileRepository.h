@@ -16,6 +16,7 @@
 #define CONF_WORKING_PATH_FOLDER_NAME "Saves"
 
 FILE * openStream(char *fileName);
+void generateFilePath(const char *fileName, char* filePath);
 
 
 #endif //PROGETTOFINALEPOI_POINTOFINTERESTBINARYFILEREPOSITORY_H

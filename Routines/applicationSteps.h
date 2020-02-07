@@ -10,6 +10,7 @@
 #include "../Utils/UI/userInterfaceUtils.h"
 #include "../Model/structures.h"
 #include "../Repository/pointOfInterestBinaryFileRepository.h"
+#include "../Utils/DynamicArray/dynamicArray.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +18,7 @@
 void startingMenu();
 void newProjectMenu();
 void loadProjectMenu();
-FILE* printMessageAndOpenStream(char* message);
-void mainMenu(char* fileName, FILE* fileStream);
+void selectFile(char* message, char* filePath);
+void mainMenu(char* fileName, dynamicArray poiData);
 
 #endif //PROGETTOFINALEPOI_APPLICATIONSTEPS_H

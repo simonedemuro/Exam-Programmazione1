@@ -74,6 +74,8 @@ void printFilesLocallyStored(){
     printf(command);
     // runs the system command
     system(command);
+    // prints a sort of cursor to indicate the user have to type
+    printf(STR_CURSOR);
 }
 
 

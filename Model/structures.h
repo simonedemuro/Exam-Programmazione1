@@ -36,4 +36,6 @@ typedef struct {
 } PointOfInterest;
 
 
+typedef enum {mListAll, mSearch, mInsert, mEdit, mDelete, mGoback}mainMenuEnumeration;
+
 #endif //PROGETTOFINALEPOI_STRUCTURES_H
