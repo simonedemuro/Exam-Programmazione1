@@ -3,18 +3,13 @@
 //
 
 #include "crudHelper.h"
-int searchByCategory(char* fileName, dynamicArray poiData){
-    return -1;
+
+void insertNewPoi(char* fileName, dynamicArray poiData){
+
 }
-int searchByMunicipe(char* fileName, dynamicArray poiData){
-    return -1;
+void editPoi(char* fileName, dynamicArray poiData){
+
 }
-int searchByKeyword(char* fileName, dynamicArray poiData){
-    return -1;
-}
-int searchByGeographicalLocation(char* fileName, dynamicArray poiData){
-    return -1;
-}
-int searchByAltitude(char* fileName, dynamicArray poiData){
-    return -1;
+void deletePoi(char* fileName, dynamicArray poiData){
+
 }

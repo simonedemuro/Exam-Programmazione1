@@ -4,6 +4,18 @@
 
 #include "searchHelper.h"
 
-void insertNewPoi(char* fileName, dynamicArray poiData){
-
+int searchByCategory(char* fileName, dynamicArray poiData){
+    return -1;
+}
+int searchByMunicipe(char* fileName, dynamicArray poiData){
+    return -1;
+}
+int searchByKeyword(char* fileName, dynamicArray poiData){
+    return -1;
+}
+int searchByGeographicalLocation(char* fileName, dynamicArray poiData){
+    return -1;
+}
+int searchByAltitude(char* fileName, dynamicArray poiData){
+    return -1;
 }
