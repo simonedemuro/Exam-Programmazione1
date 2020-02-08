@@ -20,5 +20,9 @@ void newProjectMenu();
 void loadProjectMenu();
 void selectFile(char* message, char* filePath);
 void mainMenu(char* fileName, dynamicArray poiData);
+void searchMenuHandler(char* fileName, dynamicArray poiData);
+
+/*CRUD operations */
+
 
 #endif //PROGETTOFINALEPOI_APPLICATIONSTEPS_H

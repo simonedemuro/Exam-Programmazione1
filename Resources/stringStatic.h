@@ -21,7 +21,9 @@
 #define STR_1_LOAD_PROJECT_LIST_ALL_FILES "Here is the list of the projects in your local storage: "
 
 #define STR_2_MAIN_MENU "Type the operation number you want to perform:Type the operation number you want to perform:\n\
-1. List All\n2. Search\n3. Insert New\n4. Edit an already existing\n5. Delete an already existing\n6. Go back Home"
+1. List All\n2. Search\n3. Insert New\n4. Edit an already existing\n5. Delete an already existing\n6. Go back Home\n"
 
+#define STR_3_SEARCH_MENU "Type the type of search you want to perform:\
+\n1. By Category\n2. By Municipe\n3. By Keyword\n4. By Geographical location\n5. By Altitude"
 
 #endif //PROGETTOFINALEPOI_STRINGSTATIC_H

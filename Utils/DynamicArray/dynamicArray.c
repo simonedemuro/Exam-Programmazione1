@@ -1,8 +1,10 @@
 //
 // Created by Alessandro Tola on 20/12/2019.
+// (refactored to fit the project need)
 //
 
 #include "dynamicArray.h"
+#include "../UI/userInterfaceUtils.h"
 
 /**
  * Inizializza un vettore vuoto. Il vettore non deve avere elementi
@@ -14,17 +16,69 @@ void initDynamicVector(dynamicArray *v){
 }
 
 /**
- * Funzione per la stampa di un elemento
- * @param e elemento da stampare
+ * Prints all the elements inside of a Dynamic vector of POIs
+ * @param d
  */
-void stampaElemento(Elemento e){
-    char stringa[256]="";
-    printf("Nome: %s\n", e.nome);
-    printf("Cognome: %s\n", e.cognome);
-    printf("Eta\': %d\n", e.eta);
+void stampaElementi(dynamicArray d){
+    // clears console from previous outputs
+    cleanConsole();
 
-    printf(stringa, "Nome: %s Cognome: %s Eta\': %d", e.nome, e.cognome, e.eta);
+    if(d.nElementi == 0){
+        printf("There is no data to be shown");
+    }
+    int i = 0;
+    for (i = 0; i < d.nElementi; ++i) {
+        stampaElemento(d.v[i]);
+    }
 }
+
+/**
+ * This function prints an element
+ * @param e element to be printed
+ */
+void stampaElemento(PointOfInterest e){
+    printf("Name: %s\n", e.name);
+    printf("Latitude: %f\n", e.latitude);
+    printf("Longitude: %f\n", e.longitude);
+    printf("altitude\': %f\n", e.altitude);
+    printf("Municipality: %s\n", e.municipality);
+    printf("Description: %s\n", e.description);
+    printPoiCategoryAsString(e.category);
+}
+
+/**
+ * gets an integer and prints the corresponding category
+ * @param category
+ */
+void printPoiCategoryAsString(int category){
+    switch (category){
+        case beach:
+            printf("beach");
+            break;
+        case Mountain:
+            printf("Mountain");
+            break;
+        case Park:
+            printf("Park");
+            break;
+        case Lake:
+            printf("Lake");
+            break;
+        case Cave:
+            printf("Cave");
+            break;
+        case Museum:
+            printf("Museum");
+            break;
+        case ViewPoint:
+            printf("ViewPoint");
+            break;
+        default:
+            printf("error");
+            break;
+    }
+}
+
 
 /**
  * Restituisce la dimensione dell'array
@@ -40,13 +94,13 @@ int dimensioneVettore(dynamicArray *vettore){
  * @param vettore Puntatore al vettore
  * @param e Valore da inserire
  */
-void aggiungiElemento(dynamicArray *vettore, Elemento e){
+void aggiungiElemento(dynamicArray *vettore, PointOfInterest e){
     vettore->nElementi++;
 
     if(vettore->v == NULL)
-        vettore->v = (Elemento *) malloc(vettore->nElementi * sizeof(Elemento));
+        vettore->v = (PointOfInterest *) malloc(vettore->nElementi * sizeof(PointOfInterest));
     else
-        vettore->v = (Elemento *) realloc(vettore->v,vettore->nElementi * sizeof(Elemento));
+        vettore->v = (PointOfInterest *) realloc(vettore->v,vettore->nElementi * sizeof(PointOfInterest));
 
     if(vettore->v == NULL)
         exit(-1);
@@ -60,7 +114,7 @@ void aggiungiElemento(dynamicArray *vettore, Elemento e){
  * @param posizione Posizione in cui settare il valore
  * @param e Valore
  */
-void settaElemento(dynamicArray *vettore, int posizione, Elemento e){
+void settaElemento(dynamicArray *vettore, int posizione, PointOfInterest e){
     vettore->v[posizione] = e;
 }
 
@@ -70,7 +124,7 @@ void settaElemento(dynamicArray *vettore, int posizione, Elemento e){
  * @param posizione Posizione del valore
  * @return Elemento
  */
-Elemento recuperaElemento(dynamicArray *vettore, int posizione){
+PointOfInterest recuperaElemento(dynamicArray *vettore, int posizione){
     return vettore->v[posizione];
 }
 
@@ -94,7 +148,7 @@ _Bool vettoreVuoto(dynamicArray *vettore){
 void rimuoviElementoInCoda(dynamicArray *vettore){
     if(vettore->v != NULL) {
         vettore->nElementi--;
-        vettore->v = (Elemento *) realloc(vettore->v, vettore->nElementi * sizeof(Elemento));
+        vettore->v = (PointOfInterest *) realloc(vettore->v, vettore->nElementi * sizeof(PointOfInterest));
     }
 }
 
@@ -117,7 +171,7 @@ void rimuoviInPosizione(dynamicArray *vettore, int indice){
  * @param numeroElementi Numero di elementi del vettore
  */
 void inizializzaIndefiniti(dynamicArray *vettore, int numeroElementi) {
-    vettore->v = (Elemento*) malloc(sizeof(Elemento) * numeroElementi);
+    vettore->v = (PointOfInterest*) malloc(sizeof(PointOfInterest) * numeroElementi);
 
     if (vettore->v == NULL) {
         exit(-1);
@@ -131,7 +185,7 @@ void inizializzaIndefiniti(dynamicArray *vettore, int numeroElementi) {
  * @param vettore puntatore al vettore
  * @param value valore da settare nel vettore
  */
-void impostaVettore(dynamicArray *vettore, Elemento value){
+void impostaVettore(dynamicArray *vettore, PointOfInterest value){
     int i;
     for(i = 0; i < dimensioneVettore(vettore); i++)
         settaElemento(vettore, i, value);
@@ -143,13 +197,9 @@ void impostaVettore(dynamicArray *vettore, Elemento value){
  * @param e2 elemento 2
  * @return true se sono uguali, false altrimenti
  */
-_Bool confrontaElemento(Elemento e1, Elemento e2){
-
-    if(strcmp(e1.nome, e2.nome) == 0)
-        if(strcmp(e1.cognome, e2.cognome) == 0)
-            if(e1.eta == e2.eta)
-                return true;
-
+_Bool confrontaPointOfInterests(PointOfInterest e1, PointOfInterest e2){
+    if(true)
+        return true;
     return false;
 }
 
@@ -159,7 +209,7 @@ _Bool confrontaElemento(Elemento e1, Elemento e2){
  * @param e elemento da cercare
  * @return restituisce -1 se l'elemento non è presento o l'indice dell'elemento trovato
  */
-int ricercaElemento(dynamicArray *vettore, Elemento e){
+int ricercaElemento(dynamicArray *vettore, PointOfInterest e){
 
     int i, indiceTrovato = -1;
 
@@ -170,14 +220,17 @@ int ricercaElemento(dynamicArray *vettore, Elemento e){
 
     return indiceTrovato;
 }
-
+_Bool confrontaElemento(PointOfInterest e1, PointOfInterest e2){
+    // Todo: Fare qualcosa
+    return false;
+}
 /**
  * Conta il numero di occorrenze di un detterminato elemento all'interno del vettore
  * @param vettore puntatore al vettore
  * @param e elemento da cercare
  * @return numero di occorrenze dell'elemento
  */
-int contaElemento(dynamicArray *vettore, Elemento e){
+int contaElemento(dynamicArray *vettore, PointOfInterest e){
 
     int i, contatore = 0;
 
@@ -197,10 +250,10 @@ int contaElemento(dynamicArray *vettore, Elemento e){
 void cercaElemento(dynamicArray *vettore, char *s){
 
     int i;
-    Elemento aux;
+    PointOfInterest aux;
     for(i = 0; i < dimensioneVettore(vettore); i++){
         aux = recuperaElemento(vettore, i);
-        if(strstr(aux.nome, s) != NULL || strstr(aux.cognome, s) != NULL)
+        if(strstr(aux.name, s) != NULL || strstr(aux.description, s) != NULL)
             stampaElemento(aux);
     }
 
@@ -214,7 +267,7 @@ void cercaElemento(dynamicArray *vettore, char *s){
 void salvaSuFileBinario(dynamicArray *vettore, FILE *fp){
     int nElementi = vettore->nElementi;
     fwrite(&nElementi, sizeof(int), 1, fp);
-    fwrite(vettore->v, sizeof(Elemento), nElementi, fp);
+    fwrite(vettore->v, sizeof(PointOfInterest), nElementi, fp);
 }
 
 /**
@@ -225,12 +278,12 @@ void salvaSuFileBinario(dynamicArray *vettore, FILE *fp){
 void leggiDaFileBinario(dynamicArray *vettore, FILE *fp){
     fread(&vettore->nElementi, sizeof(int), 1, fp);
 
-    vettore->v = (Elemento *) malloc(vettore->nElementi * sizeof(Elemento));
+    vettore->v = (PointOfInterest *) malloc(vettore->nElementi * sizeof(PointOfInterest));
 
     if(vettore->v == NULL)
         exit(-1);
 
-    fread(vettore->v, sizeof(Elemento), vettore->nElementi, fp);
+    fread(vettore->v, sizeof(PointOfInterest), vettore->nElementi, fp);
 }
 
 /**

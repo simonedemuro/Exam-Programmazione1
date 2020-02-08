@@ -4,6 +4,7 @@
 
 #include "applicationSteps.h"
 #include "../Utils/DynamicArray/dynamicArray.h"
+#include "searchHelper.h"
 
 
 /**
@@ -89,15 +90,19 @@ void loadProjectMenu(){
 void mainMenu(char* fileName, dynamicArray poiData){
     // prints a message informing the user of the available options
     printf(STR_2_MAIN_MENU);
-    // safely getting an answer from the user trough this
+
+    // safely getting an answer from the user trough this (magic 6 is the number of available options)
     int userAnswer = getAnswerFromUser(6);
     // based on the operation typed run a subroutine
     switch (userAnswer){
         case mListAll:
+            stampaElementi(poiData);
             break;
         case mSearch:
+            searchMenuHandler(fileName, poiData);
             break;
         case mInsert:
+            insertNewPoi(fileName, poiData);
             break;
         case mEdit:
             break;
@@ -112,6 +117,46 @@ void mainMenu(char* fileName, dynamicArray poiData){
 }
 
 /**
+ * Step 3
+ *
+ * This function prompts the available search options and redirects to the selected one 
+ * @param fileName is the current file in use 
+ * @param poiData is the data currently in use  
+ */
+void searchMenuHandler(char* fileName, dynamicArray poiData){
+    int selectedOption;
+    // prompt message
+    printf(STR_3_SEARCH_MENU);
+    printf(STR_CURSOR);
+    // get selection from user
+    selectedOption = getAnswerFromUser(5);
+
+    // redirects the user to the selected type of search to be performed
+    // the options are explicated by their enumerated names
+    switch (selectedOption){
+        case sByCategory:
+            searchByCategory(fileName, poiData);
+            break;
+        case sByMunicipe:
+            searchByMunicipe(fileName, poiData);
+            break;
+        case sByKeyword:
+            searchByKeyword(fileName, poiData);
+            break;
+        case sByGeoLocation:
+            searchByGeographicalLocation(fileName, poiData);
+            break;
+        case sByAltitude:
+            searchByAltitude(fileName, poiData);
+            break;
+        default:
+            handledError();
+            break;
+    }
+
+}
+
+/**
  * Since new project and load project are very similar, this function provides a common template to avoid
  * code repetitions.
  * @param message is the message is gonna be prompted to user
@@ -123,6 +168,8 @@ void selectFile(char* message, char* filePath){
     char fileName[SHORT_STRING];
     // prompt the awareness message asking for the filename
     printf(STR_1_NEW_PROJECT);
+    // printing the cursor
+    printf(STR_CURSOR);
 
     // read user input spaces included the getChar is intended to free the buffer
     // Todo: find a fancier way to free the buffer

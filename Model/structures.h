@@ -37,5 +37,6 @@ typedef struct {
 
 
 typedef enum {mListAll, mSearch, mInsert, mEdit, mDelete, mGoback}mainMenuEnumeration;
+typedef enum {sByCategory, sByMunicipe, sByKeyword, sByGeoLocation, sByAltitude}searchMenuEnumeration;
 
 #endif //PROGETTOFINALEPOI_STRUCTURES_H

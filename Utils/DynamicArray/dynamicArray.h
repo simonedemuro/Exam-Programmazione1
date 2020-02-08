@@ -10,39 +10,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
-/** Definizione macro **/
-#define DIM_NOME 20
-#define DIM_COGNOME 20
-
-/** Definizione strutture **/
-typedef struct{
-    char nome[DIM_NOME+1];
-    char cognome[DIM_COGNOME+1];
-    int eta;
-} Elemento;
+#include "../../Model/structures.h"
 
 typedef struct{
-    Elemento *v;
+    PointOfInterest *v;
     int nElementi;
 } dynamicArray;
 
 /** Prototipi subroutine **/
 void initDynamicVector(dynamicArray *v);
-void stampaElemento(Elemento e);
+void stampaElementi(dynamicArray d);
+void stampaElemento(PointOfInterest e);
 int dimensioneVettore(dynamicArray *vettore);
-void aggiungiElemento(dynamicArray *vettore, Elemento e);
-void settaElemento(dynamicArray *vettore, int posizione, Elemento e);
-Elemento recuperaElemento(dynamicArray *vettore, int posizione);
+void aggiungiElemento(dynamicArray *vettore, PointOfInterest e);
+void settaElemento(dynamicArray *vettore, int posizione, PointOfInterest e);
+PointOfInterest recuperaElemento(dynamicArray *vettore, int posizione);
 _Bool vettoreVuoto(dynamicArray *vettore);
 void rimuoviElementoInCoda(dynamicArray *vettore);
 void rimuoviInPosizione(dynamicArray *vettore, int indice);
-void impostaVettore(dynamicArray *vettore, Elemento value);
-_Bool confrontaElemento(Elemento e1, Elemento e2);
-int ricercaElemento(dynamicArray *vettore, Elemento e);
-int contaElemento(dynamicArray *vettore, Elemento e);
+void impostaVettore(dynamicArray *vettore, PointOfInterest value);
+_Bool confrontaElemento(PointOfInterest e1, PointOfInterest e2);
+int ricercaElemento(dynamicArray *vettore, PointOfInterest e);
+int contaElemento(dynamicArray *vettore, PointOfInterest e);
 void cercaElemento(dynamicArray *vettore, char *s);
+void printPoiCategoryAsString(int category);
 
+/* on disk operations */
 void salvaSuFileBinario(dynamicArray *vettore, FILE *fp);
 void leggiDaFileBinario(dynamicArray *vettore, FILE *fp);
 FILE * openFile(char *nomeFile, char *mode);
