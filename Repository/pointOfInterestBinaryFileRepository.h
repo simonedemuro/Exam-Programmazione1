@@ -10,6 +10,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "../Utils/UI/userInterfaceUtils.h"
+#include "../Utils/DynamicArray/dynamicArray.h"
 
 // Config Section:
 #define CONF_WORKING_PATH "Saves/"
@@ -17,6 +18,9 @@
 
 FILE * openStream(char *fileName);
 void generateFilePath(const char *fileName, char* filePath);
-
+void salvaSuFileBinario(dynamicArray *poiData, FILE *fp);
+void leggiDaFileBinario(dynamicArray *vettore, FILE *fp);
+FILE * openFile(char *nomeFile, char *mode);
+FILE * chiudiFile(FILE * fp);
 
 #endif //PROGETTOFINALEPOI_POINTOFINTERESTBINARYFILEREPOSITORY_H

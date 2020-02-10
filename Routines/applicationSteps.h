@@ -19,8 +19,8 @@ void startingMenu();
 void newProjectMenu();
 void loadProjectMenu();
 void selectFile(char* message, char* filePath);
-void mainMenu(char* fileName, dynamicArray poiData);
-void searchMenuHandler(char* fileName, dynamicArray poiData);
+void mainMenu(char* filePath, dynamicArray poiData);
+void searchMenuHandler(char* filePath, dynamicArray poiData);
 
 /*CRUD operations */
 

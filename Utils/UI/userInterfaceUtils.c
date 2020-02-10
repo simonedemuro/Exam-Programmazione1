@@ -8,11 +8,11 @@
 
 /**
  * This function provides a fast and higly reusable way to get the the input from the user.
- * This function is used as a standard way to ask for an input in the whole project
+ * This function is used as a standard way to ask for a numeric input in the whole project
  * @param maxOptionAvailable represents the Maximum included enumeration number selectable by the user
  * @return returns a valid enumeration from the user input (between 0 and maxOptionAvailable)
  */
-int getAnswerFromUser(int maxOptionAvailable){
+int getNumericAnswerFromUser(int maxOptionAvailable){
     int userAnswer = -1; //Todo: ask if it might be changed to unsigned int
     _Bool invalidInputEntered;
 
@@ -28,6 +28,40 @@ int getAnswerFromUser(int maxOptionAvailable){
     } while(invalidInputEntered);
     //than returns a certainly valid input
     return userAnswer;
+}
+
+/**
+ *  This function provides a fast and higly reusable way to get the the input from the user.
+ *  This function is used as a standard way to ask for <YES/NO> input in the whole project
+ * @return converts the user answer to a boolean
+ */
+_Bool getYesNoAnswerFromUser(){
+    // variable to hold the answer, and two flags to check resp. the input validity and the result
+    char c;
+    _Bool isInputValid = false;
+    _Bool result = false;
+
+    // until the user types something valid
+    do {
+        // prints the cursor and wait for an input from the user
+        printf(STR_CURSOR);
+        freeTheBuffer();
+        scanf("%c", &c);
+
+        /*converting the letter to boolean*/
+        // yes leads to true
+        if (c == 'y' || c == 'Y'){
+            isInputValid = true;
+            result = true;
+        }
+        // no leads to false
+        else if (c == 'N' || c == 'n') {
+            isInputValid = true;
+            result = false;
+        }
+    } while (!isInputValid);
+
+    return result;
 }
 
 
@@ -71,11 +105,13 @@ void printFilesLocallyStored(){
     // passes the saving path to the command as an argument
     strcat(command, CONF_WORKING_PATH_FOLDER_NAME);
 
+    // the command just sent to the os will be prompted to make it more transparent
+    printf("\n");
     printf(command);
-    // runs the system command
+    printf("\n");
+    // runs the system command (DIR under windows or ls under linux and Mac)
+    // the effect in both will be to print a list of the available file on the save folder.
     system(command);
-    // prints a sort of cursor to indicate the user have to type
-    printf(STR_CURSOR);
 }
 
 
@@ -88,4 +124,9 @@ void handledError(){
     printf("An Error or unexpected condition happened, please press a key to restart the application, if the error persists contact the support");
     getchar();
     startingMenu();
+}
+
+
+void freeTheBuffer(){
+    while ( getchar() != '\n' );
 }

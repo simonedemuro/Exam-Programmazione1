@@ -9,9 +9,11 @@
 #include <stdbool.h>
 #include "../../Resources/stringStatic.h"
 
-int getAnswerFromUser(int maxOptionAvailable);
+int getNumericAnswerFromUser(int maxOptionAvailable);
 void handledError();
 void cleanConsole();
 void printFilesLocallyStored();
+_Bool getYesNoAnswerFromUser();
+void freeTheBuffer();
 
 #endif //PROGETTOFINALEPOI_USERINTERFACEUTILS_H

@@ -11,15 +11,8 @@
 /**
  * Declaring the enumerator used to store the POI categories
  */
-typedef enum  {
-    beach,
-    Mountain,
-    Park,
-    Lake,
-    Cave,
-    Museum,
-    ViewPoint,
-    Other
+typedef enum {
+    beach, Mountain, Park, Lake, Cave, Museum, ViewPoint, Other
 } CategoryPoi;
 
 /**
@@ -35,8 +28,35 @@ typedef struct {
     CategoryPoi category;
 } PointOfInterest;
 
+/**
+ * This enum is used to avoid magic numbers in the
+ * application main menu aka Step 2.
+ */
+typedef enum {
+    mListAll, mSearch, mInsert, mEdit, mDelete, mGoback
+} mainMenuEnumeration;
 
-typedef enum {mListAll, mSearch, mInsert, mEdit, mDelete, mGoback}mainMenuEnumeration;
-typedef enum {sByCategory, sByMunicipe, sByKeyword, sByGeoLocation, sByAltitude}searchMenuEnumeration;
+/**
+ * This enum is used to avoid magic numbers in the
+ * applications's search menu
+ */
+typedef enum {
+    sByCategory, sByMunicipe, sByKeyword, sByGeoLocation, sByAltitude
+} searchMenuEnumeration;
 
+/**
+ * This enum is used to avoid magic numbers in the
+ * applications's edit menu
+ */
+typedef enum {
+    editName, editLatitude, editLongitude, editAltitude, editMunicipality, editDescription, editCategory
+} editMenuEnumeration;
+
+/**
+ * This enum is used to avoid magic numbers in the
+ * applications's starting menu aka Step 0
+ */
+ typedef enum {
+     newProjectFromScratch, editAlreadyExistingProject
+ }startMenuEnum;
 #endif //PROGETTOFINALEPOI_STRUCTURES_H

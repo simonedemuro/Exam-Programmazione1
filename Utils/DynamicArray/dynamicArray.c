@@ -19,31 +19,41 @@ void initDynamicVector(dynamicArray *v){
  * Prints all the elements inside of a Dynamic vector of POIs
  * @param d
  */
-void stampaElementi(dynamicArray d){
+void printPoiArray(dynamicArray d){
     // clears console from previous outputs
     cleanConsole();
 
+    // in case the array is empty prints a message
     if(d.nElementi == 0){
-        printf("There is no data to be shown");
+        printf(STR_NO_DATA_AVAILABLE);
     }
+
+    // going trough dynamicArray printing everything
     int i = 0;
     for (i = 0; i < d.nElementi; ++i) {
-        stampaElemento(d.v[i]);
+        printf("INDEX: %d", i);
+        printElement(d.v[i]);
     }
+    // prints a new line in order to make the next menu easier to read
+    printf("\n");
 }
 
 /**
  * This function prints an element
+ * the white spaces before the names are for formatting purposes
  * @param e element to be printed
  */
-void stampaElemento(PointOfInterest e){
-    printf("Name: %s\n", e.name);
-    printf("Latitude: %f\n", e.latitude);
-    printf("Longitude: %f\n", e.longitude);
-    printf("altitude\': %f\n", e.altitude);
-    printf("Municipality: %s\n", e.municipality);
-    printf("Description: %s\n", e.description);
+void printElement(PointOfInterest e){
+    printf("  Name: %s\n", e.name);
+    printf("  Latitude: %f\n", e.latitude);
+    printf("  Longitude: %f\n", e.longitude);
+    printf("  altitude\': %f\n", e.altitude);
+    printf("  Municipality: %s\n", e.municipality);
+    printf("  Description: %s\n  ", e.description);
+    // the category needs to be treated apart
+    printf("Category: ");
     printPoiCategoryAsString(e.category);
+    printf("\n");
 }
 
 /**
@@ -72,6 +82,9 @@ void printPoiCategoryAsString(int category){
             break;
         case ViewPoint:
             printf("ViewPoint");
+            break;
+        case Other:
+            printf("Other");
             break;
         default:
             printf("error");
@@ -254,62 +267,7 @@ void cercaElemento(dynamicArray *vettore, char *s){
     for(i = 0; i < dimensioneVettore(vettore); i++){
         aux = recuperaElemento(vettore, i);
         if(strstr(aux.name, s) != NULL || strstr(aux.description, s) != NULL)
-            stampaElemento(aux);
+            printElement(aux);
     }
 
-}
-
-/**
- * Leggo i dati di un vettore dinami e creo un file binario con i dati letti
- * @param vettore vettore dinamico
- * @param fp puntatore al file binario
- */
-void salvaSuFileBinario(dynamicArray *vettore, FILE *fp){
-    int nElementi = vettore->nElementi;
-    fwrite(&nElementi, sizeof(int), 1, fp);
-    fwrite(vettore->v, sizeof(PointOfInterest), nElementi, fp);
-}
-
-/**
- * Leggo i dati di un file binario e creo un vettore dinamico con i dati del file
- * @param vettore vettore da popolare
- * @param fp puntatore al file binario
- */
-void leggiDaFileBinario(dynamicArray *vettore, FILE *fp){
-    fread(&vettore->nElementi, sizeof(int), 1, fp);
-
-    vettore->v = (PointOfInterest *) malloc(vettore->nElementi * sizeof(PointOfInterest));
-
-    if(vettore->v == NULL)
-        exit(-1);
-
-    fread(vettore->v, sizeof(PointOfInterest), vettore->nElementi, fp);
-}
-
-/**
- * Apre ed esegue tutti i controlli quando si apre un file
- * @param nomeFile nome del file da aprire
- * @param mode modalità di apertura del file
- * @return puntatore al file aperto
- */
-FILE * openFile(char *nomeFile, char *mode){
-    FILE *fp = fopen(nomeFile, mode);
-
-    if(fp == NULL)
-        exit(-1);
-
-    return fp;
-}
-
-/**
- * Chiude un file eseguendo i controlli sul file passato
- * @param fp puntatore al file da chiudere
- * @return NULL se tutto è andato a buon fine
- */
-FILE * chiudiFile(FILE * fp){
-
-    if(fp != NULL)
-        fclose(fp);
-
-    return NULL;
 }

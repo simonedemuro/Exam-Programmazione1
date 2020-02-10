@@ -19,8 +19,8 @@ typedef struct{
 
 /** Prototipi subroutine **/
 void initDynamicVector(dynamicArray *v);
-void stampaElementi(dynamicArray d);
-void stampaElemento(PointOfInterest e);
+void printPoiArray(dynamicArray d);
+void printElement(PointOfInterest e);
 int dimensioneVettore(dynamicArray *vettore);
 void aggiungiElemento(dynamicArray *vettore, PointOfInterest e);
 void settaElemento(dynamicArray *vettore, int posizione, PointOfInterest e);
@@ -34,11 +34,5 @@ int ricercaElemento(dynamicArray *vettore, PointOfInterest e);
 int contaElemento(dynamicArray *vettore, PointOfInterest e);
 void cercaElemento(dynamicArray *vettore, char *s);
 void printPoiCategoryAsString(int category);
-
-/* on disk operations */
-void salvaSuFileBinario(dynamicArray *vettore, FILE *fp);
-void leggiDaFileBinario(dynamicArray *vettore, FILE *fp);
-FILE * openFile(char *nomeFile, char *mode);
-FILE * chiudiFile(FILE * fp);
 
 #endif //UNTITLED33_VETTOREDINAMICO_H
