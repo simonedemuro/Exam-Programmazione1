@@ -59,4 +59,16 @@ typedef enum {
  typedef enum {
      newProjectFromScratch, editAlreadyExistingProject
  }startMenuEnum;
+
+ /**
+  * This enum is used as options for the sorting function
+  */
+ typedef enum {
+     ASC, DESC
+ }sortTypeEnum;
+
+ typedef enum {
+     plane, hill, mountain
+ }altitudeEnum;
+
 #endif //PROGETTOFINALEPOI_STRUCTURES_H

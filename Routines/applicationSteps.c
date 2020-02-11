@@ -153,7 +153,6 @@ void mainMenu(char* filePath, dynamicArray poiData){
             default:
                 break;
         }
-        //fclose(fileStream);
     }
 }
 
@@ -165,10 +164,12 @@ void mainMenu(char* filePath, dynamicArray poiData){
  * @param poiData is the data currently in use  
  */
 void searchMenuHandler(char* filePath, dynamicArray poiData){
-    int selectedOption;
+    cleanConsole();
+    // option selected by the user
+    CategoryPoi selectedOption;
+
     // prompt message
     printf(STR_3_SEARCH_MENU);
-    printf(STR_CURSOR);
     // get selection from user
     selectedOption = getNumericAnswerFromUser(5);
 

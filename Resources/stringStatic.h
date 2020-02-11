@@ -24,7 +24,7 @@
 0. List All\n1. Search\n2. Insert New\n3. Edit an already existing\n4. Delete an already existing\n5. Go back Home\n"
 
 #define STR_3_SEARCH_MENU "Type the type of search you want to perform:\
-\n0. By Category\n1. By Municipe\n2. By Keyword\n3. By Geographical location\n4. By Altitude"
+\n0. By Category\n1. By Municipe\n2. By Keyword inside Description\n3. By Geographical location\n4. By Altitude\n"
 
 #define STR_INSERT_HOME "Welcome to guided point of interest insertion,\
  please type attribute by attribute the requested information\n"
@@ -38,5 +38,7 @@
 #define STR_NO_DATA_AVAILABLE "There is no data to be shown\n"
 
 #define STR_EDIT_POI_MENU "\nType the number corresponding to the desired field you want to to edit\n0. Name\n1. Latitude\n2. Longitude\n3. Altitude\n4. Municipality\n5. Description\n6. Category\n"
+
+#define STR_NO_DATA_FOUND "No Data retrieved, try changing the filtering criteria\n"
 
 #endif //PROGETTOFINALEPOI_STRINGSTATIC_H

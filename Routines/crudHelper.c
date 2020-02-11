@@ -100,7 +100,7 @@ void editPoi(char* fileName, dynamicArray poiData){
         case editLongitude:
             printf("Type the new Longitude:\n");
             printf(STR_CURSOR);
-            scanf("%lf", &poiData.v[poiToBeEditedIndex].latitude );
+            scanf("%lf", &poiData.v[poiToBeEditedIndex].longitude );
             break;
         case editAltitude:
             printf("Type the new Altitude:\n");
@@ -121,7 +121,6 @@ void editPoi(char* fileName, dynamicArray poiData){
             break;
         case editCategory:
             printf(STR_LIST_CATEGORIES_ENUM);
-            printf(STR_CURSOR);
             poiData.v[poiToBeEditedIndex].category = getNumericAnswerFromUser(8);
             break;
         default:
@@ -131,6 +130,7 @@ void editPoi(char* fileName, dynamicArray poiData){
     // ask if the user wants to save and acts accordingly by using the usual util
     printf(STR_SAVE_WARNING);
     wantsToSave = getYesNoAnswerFromUser();
+    // if save has been selected saves to disk.
     if(wantsToSave){
         // opens the stream, saves to disk (eventually overriding), then closes the stream
         FILE* filePointer = openFile(fileName, "wb");
@@ -153,9 +153,17 @@ void deletePoi(char* fileName, dynamicArray poiData){
     // user's will to save changes, by default is no
     _Bool wantsToSave = false;
     // this will contain the Poi's index that will be deleted
-    int poiToBeEditedIndex = 0;
+    int poiToBeDeletedIndex = 0;
 
     // Lists the Pois available and asks the user which Poi wants to edit
     printPoiArray(poiData);
     printf("\nType the index of the Point you want to delete:\n");
+
+    // Gets the index that the user wants to delete (checking if it is in a valid range)
+    poiToBeDeletedIndex = getNumericAnswerFromUser(poiData.nElementi);
+
+    // Actually deleting
+    deletePoiAt(&poiData, poiToBeDeletedIndex);
+
+
 }

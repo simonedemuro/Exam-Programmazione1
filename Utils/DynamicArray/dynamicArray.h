@@ -27,7 +27,7 @@ void settaElemento(dynamicArray *vettore, int posizione, PointOfInterest e);
 PointOfInterest recuperaElemento(dynamicArray *vettore, int posizione);
 _Bool vettoreVuoto(dynamicArray *vettore);
 void rimuoviElementoInCoda(dynamicArray *vettore);
-void rimuoviInPosizione(dynamicArray *vettore, int indice);
+void deletePoiAt(dynamicArray *vettore, int indice);
 void impostaVettore(dynamicArray *vettore, PointOfInterest value);
 _Bool confrontaElemento(PointOfInterest e1, PointOfInterest e2);
 int ricercaElemento(dynamicArray *vettore, PointOfInterest e);

@@ -170,7 +170,7 @@ void rimuoviElementoInCoda(dynamicArray *vettore){
  * @param vettore Puntatore al vettore
  * @param indice indice dell'elemento da rimuovere
  */
-void rimuoviInPosizione(dynamicArray *vettore, int indice){
+void deletePoiAt(dynamicArray *vettore, int indice){
     int i;
     for(i=indice; i<(vettore->nElementi-1); i++){
         vettore->v[i] = vettore->v[i+1];
