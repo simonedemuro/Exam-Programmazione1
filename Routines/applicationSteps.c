@@ -142,10 +142,10 @@ void mainMenu(char* filePath, dynamicArray poiData){
                 insertNewPoi(filePath, &poiData);
                 break;
             case mEdit:
-                editPoi(filePath, poiData);
+                editPoi(filePath, &poiData);
                 break;
             case mDelete:
-                deletePoi(filePath, poiData);
+                deletePoi(filePath, &poiData);
                 break;
             case mGoback:
                 startingMenu();

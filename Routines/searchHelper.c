@@ -122,9 +122,50 @@ int searchByKeyword(char* fileName, dynamicArray poiData){
     return searchResult.nElementi;
 }
 
-
+/**
+ * Assuming the earth as a perfect sphere, the radius is also approssimate
+ * @param fileName
+ * @param poiData
+ * @return
+ */
 int searchByGeographicalLocation(char* fileName, dynamicArray poiData){
+    double radious = 6371;
+
     return -1;
+}
+
+/**
+ * This funciton calculates the distance between two points <(latA, lonA),(latB, lonB)>
+ * This functions is a refactored version of the following:
+ * Credits & Further docs: https://www.spadamar.com/2007/12/calcolo-della-distanza-geodetica-tra-due-punti-della-superficie-terrestre/
+ * @param latA first point latitude
+ * @param lonA first point longitude
+ * @param latB second point latitude
+ * @param lonB second point longitude
+ * @return the distance in Km between two points
+ */
+double disgeod (double latA, double lonA, double latB, double lonB)
+{
+    /* Defining the Constants  */
+    double lat_alfa, lat_beta;
+    double lon_alfa, lon_beta;
+    double fi;
+    double p, d;
+
+    /* Degrees to radiants */
+    lat_alfa = M_PI * latA / 180;
+    lat_beta = M_PI * latB / 180;
+    lon_alfa = M_PI * lonA / 180;
+    lon_beta = M_PI * lonB / 180;
+    /* Calcola l'angolo compreso fi */
+    fi = fabs(lon_alfa - lon_beta);
+    /* Calcola il terzo lato del triangolo sferico */
+    p = acos(sin(lat_beta) * sin(lat_alfa) +
+             cos(lat_beta) * cos(lat_alfa) * cos(fi));
+    /* Calcola la distanza sulla superficie
+    terrestre R = ~6371 km */
+    d = p * EARTH_RADIOUS;
+    return(d);
 }
 
 /**
@@ -206,7 +247,7 @@ void searchOutputCommonHandler(dynamicArray *poiData, dynamicArray *searchResult
         printf("Do you want to order Ascending or Descending?\n0. Ascending\n1. Descending\n");
         sortType = getNumericAnswerFromUser(1);
         // Calls the sort subroutine
-        sortPoiData(poiData, sortType);
+        sortPoiData(searchResult, sortType);
 
         // Showing the data after has been sorted (if so)
         for(i = 0; i < (*searchResult).nElementi; ++i){

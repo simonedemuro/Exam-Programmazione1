@@ -8,7 +8,7 @@
 #include "../Utils/DynamicArray/dynamicArray.h"
 
 void insertNewPoi(char* fileName, dynamicArray* poiData);
-void editPoi(char* fileName, dynamicArray poiData);
-void deletePoi(char* fileName, dynamicArray poiData);
+void editPoi(char* fileName, dynamicArray* poiData);
+void deletePoi(char* fileName, dynamicArray* poiData);
 
 #endif //PROGETTOFINALEPOI_CRUDHELPER_H
