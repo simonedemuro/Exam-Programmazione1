@@ -23,10 +23,12 @@ void insertNewPoi(char* fileName, dynamicArray* poiData){
     printf("Name: ");
     getchar();
     scanf("%[^\n]", pointToBeAdded.name);
+    // asking for latitude until the user enters a valid number (belonging to sardinia)
     printf("Latitude: ");
-    scanf("%lf", &pointToBeAdded.latitude);
+    pointToBeAdded.latitude = getLatitudeAnswerFromUser();
+    // asking for longitude until the user enters a valid number (belonging to sardinia)
     printf("Longitude: ");
-    scanf("%lf", &pointToBeAdded.longitude);
+    pointToBeAdded.longitude = getLongitudeAnswerFromUser();
     printf("Altitude: ");
     scanf("%lf", &pointToBeAdded.altitude);
     printf("Municipality: ");
@@ -95,12 +97,12 @@ void editPoi(char* fileName, dynamicArray* poiData){
         case editLatitude:
             printf("Type the new Latitude:\n");
             printf(STR_CURSOR);
-            scanf("%lf", &poiData->v[poiToBeEditedIndex].latitude );
+            poiData->v[poiToBeEditedIndex].latitude = getLatitudeAnswerFromUser();
             break;
         case editLongitude:
             printf("Type the new Longitude:\n");
             printf(STR_CURSOR);
-            scanf("%lf", &poiData->v[poiToBeEditedIndex].longitude );
+            poiData->v[poiToBeEditedIndex].longitude = getLongitudeAnswerFromUser();
             break;
         case editAltitude:
             printf("Type the new Altitude:\n");

@@ -129,9 +129,47 @@ int searchByKeyword(char* fileName, dynamicArray poiData){
  * @return
  */
 int searchByGeographicalLocation(char* fileName, dynamicArray poiData){
-    double radious = 6371;
+    /* declarative space, the variable names in use are long and self-explaintory */
+    double latitudeToSearchFor, longitudeToSearchFor, radiusOfTheSearch, calculatedDistance;
+    int i = 0; // for loop index
+    dynamicArray searchResult;
 
-    return -1;
+    // initializing the result vector
+    initDynamicVector(&searchResult);
+
+    // Asks the user to point define the center point he wants to search near by
+    printf("Type the point's latitude you want search for: \n");
+    latitudeToSearchFor = getLatitudeAnswerFromUser();
+    printf("Type the point's longitude you want search for: \n");
+    longitudeToSearchFor = getLongitudeAnswerFromUser();
+    
+    // Asks for the radious of the search to be performed
+    printf("Type the radious you want use to circumscribe your search: \n");
+    scanf("%lf", &radiusOfTheSearch);
+
+    // performing the search, iterating over the whole POI collection
+    for (i = 0; i < poiData.nElementi; ++i) {
+        // calculating the distance using the geoDistance function, providing the two points
+        calculatedDistance =
+                geoDistance(poiData.v[i].latitude, poiData.v[i].longitude, latitudeToSearchFor, longitudeToSearchFor);
+
+        // whenever a point's distance is lower or equal to the given radius (is close enough) it is added to results
+        if( calculatedDistance <= radiusOfTheSearch ){
+            aggiungiElemento(&searchResult, poiData.v[i]);
+        }
+    }
+
+    // if the query didn't retrieved the data prints a message and skips the next statements by returning back
+    if(searchResult.nElementi <= 0){
+        printf(STR_NO_DATA_FOUND);
+        return searchResult.nElementi;
+    }
+
+    // Since this function is common for all of the searches that can be performed
+    // it will take care to display the fetched data, sort and export accordingly to the user's will
+    searchOutputCommonHandler(&poiData, &searchResult);
+
+    return searchResult.nElementi;
 }
 
 /**
@@ -144,13 +182,13 @@ int searchByGeographicalLocation(char* fileName, dynamicArray poiData){
  * @param lonB second point longitude
  * @return the distance in Km between two points
  */
-double disgeod (double latA, double lonA, double latB, double lonB)
+double geoDistance (double latA, double lonA, double latB, double lonB)
 {
     /* Defining the Constants  */
     double lat_alfa, lat_beta;
     double lon_alfa, lon_beta;
     double fi;
-    double p, d;
+    double angleIncluded, distance;
 
     /* Degrees to radiants */
     lat_alfa = M_PI * latA / 180;
@@ -160,12 +198,32 @@ double disgeod (double latA, double lonA, double latB, double lonB)
     /* Calcola l'angolo compreso fi */
     fi = fabs(lon_alfa - lon_beta);
     /* Calcola il terzo lato del triangolo sferico */
-    p = acos(sin(lat_beta) * sin(lat_alfa) +
+    angleIncluded = acos(sin(lat_beta) * sin(lat_alfa) +
              cos(lat_beta) * cos(lat_alfa) * cos(fi));
-    /* Calcola la distanza sulla superficie
-    terrestre R = ~6371 km */
-    d = p * EARTH_RADIOUS;
-    return(d);
+    /* Calcola la distanza sulla superficie*/
+    distance = angleIncluded * EARTH_RADIOUS;
+
+    return(distance);
+}
+
+/**
+ * compresa tra i 38° 51' 52" (38.86444444) e i 41° 15' 42" (41.26166667) di latitudine Nord e
+ *          tra gli 8° 8' (8.13333333) e 9° 50' (9.83333333) di longitudine Est
+ * @param lat the point's latitude
+ * @param lon the point's longitude
+ * @return true if the point belongs to sardinia, false otherwise
+ */
+_Bool isInSardinia(double lat, double lon){
+    // checking the latitude
+    _Bool isSardinianLatitude = (lat >= MIN_SARDINIAN_LATITUDE && lat <= MAX_SARDINIAN_LATITUDE);
+    // checking the longitude
+    _Bool isSardinianLongitude = (lon >= MIN_SARDINIAN_LONGITUDE &&  lon <= MAX_SARDINIAN_LONGITUDE);
+
+    // if it matches both, the point belong to motherland
+    if(isSardinianLatitude && isSardinianLongitude)
+        return true;
+    // otherwise it does not
+    return false;
 }
 
 /**

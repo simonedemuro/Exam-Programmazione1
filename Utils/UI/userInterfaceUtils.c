@@ -5,6 +5,7 @@
 #include <stdlib.h> // used to call system calls
 #include "userInterfaceUtils.h"
 #include "../../Routines/applicationSteps.h"
+#include "../../Routines/searchHelper.h"
 
 /**
  * This function provides a fast and higly reusable way to get the the input from the user.
@@ -26,6 +27,47 @@ int getNumericAnswerFromUser(int maxOptionAvailable){
             printf(STR_INVALID_INPUT_WARNING);
         }
     } while(invalidInputEntered);
+    //than returns a certainly valid input
+    return userAnswer;
+}
+
+double getLatitudeAnswerFromUser(){
+    double userAnswer = -1;
+    _Bool isSardinianLatitude;
+
+    // Asks for an option until it gets entered correctly
+    do {
+        printf(STR_CURSOR);
+        scanf("%lf", &userAnswer);
+        // checks if the value is between 1 and the maximum option available for this command
+        isSardinianLatitude = (userAnswer >= MIN_SARDINIAN_LATITUDE && userAnswer <= MAX_SARDINIAN_LATITUDE);
+
+        if(!isSardinianLatitude){
+            printf("The longitude you entered does not belong to Sardinia, please enter a value between %f and %f",
+                    MIN_SARDINIAN_LATITUDE, MAX_SARDINIAN_LATITUDE);
+        }
+    } while(!isSardinianLatitude);
+    //than returns a certainly valid input
+    return userAnswer;
+}
+
+
+double getLongitudeAnswerFromUser(){
+    double userAnswer = -1;
+    _Bool isSardinianLingitude;
+
+    // Asks for an option until it gets entered correctly
+    do {
+        printf(STR_CURSOR);
+        scanf("%lf", &userAnswer);
+        // checks if the value is between 1 and the maximum option available for this command
+        isSardinianLingitude = (userAnswer >= MIN_SARDINIAN_LONGITUDE && userAnswer <= MAX_SARDINIAN_LONGITUDE);
+
+        if(!isSardinianLingitude){
+            printf("The longitude you entered does not belong to Sardinia, please enter a value between %f and %f",
+                   MIN_SARDINIAN_LONGITUDE, MAX_SARDINIAN_LONGITUDE);
+        }
+    } while(!isSardinianLingitude);
     //than returns a certainly valid input
     return userAnswer;
 }

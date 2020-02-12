@@ -5,6 +5,14 @@
 #ifndef PROGETTOFINALEPOI_SEARCHHELPER_H
 #define PROGETTOFINALEPOI_SEARCHHELPER_H
 
+#define MIN_SARDINIAN_LATITUDE 38.86444444
+
+#define MAX_SARDINIAN_LATITUDE 41.26166667
+
+#define MIN_SARDINIAN_LONGITUDE 8.13333333
+
+#define MAX_SARDINIAN_LONGITUDE 9.83333333
+
 #include "../Utils/DynamicArray/dynamicArray.h"
 #include "../Resources/stringStatic.h"
 #include "../Utils/UI/userInterfaceUtils.h"
@@ -17,5 +25,8 @@ int searchByKeyword(char* fileName, dynamicArray poiData);
 int searchByGeographicalLocation(char* fileName, dynamicArray poiData);
 int searchByAltitude(char* fileName, dynamicArray poiData);
 altitudeEnum getPoiAltitudeEnumByPoi(PointOfInterest p);
+double geoDistance (double latA, double lonA, double latB, double lonB);
+_Bool isInSardinia(double lat, double lon);
+
 
 #endif //PROGETTOFINALEPOI_SEARCHHELPER_H
