@@ -21,6 +21,8 @@ int getNumericAnswerFromUser(int maxOptionAvailable){
     do {
         printf(STR_CURSOR);
         scanf("%d", &userAnswer);
+        freeTheBuffer();
+
         // checks if the value is between 1 and the maximum option available for this command
         invalidInputEntered = userAnswer < 0 || userAnswer > maxOptionAvailable;
         if(invalidInputEntered){
@@ -87,8 +89,8 @@ _Bool getYesNoAnswerFromUser(){
     do {
         // prints the cursor and wait for an input from the user
         printf(STR_CURSOR);
-        freeTheBuffer();
         scanf("%c", &c);
+        freeTheBuffer();
 
         /*converting the letter to boolean*/
         // yes leads to true

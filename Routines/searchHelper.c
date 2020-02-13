@@ -62,8 +62,8 @@ int searchByMunicipe(char* fileName, dynamicArray poiData){
     // Prompting a message and asking for the Municipality to search for
     printf("Type the municipality you want to search for:\n");
     printf(STR_CURSOR);
-    freeTheBuffer();
     scanf("%[^\n]", municipeToChoseFrom);
+    freeTheBuffer();
 
     // performing the search, iterating over the whole POI collection
     for (i = 0; i < poiData.nElementi; ++i) {
@@ -97,8 +97,8 @@ int searchByKeyword(char* fileName, dynamicArray poiData){
     // Prompting a message and asking for the descriprion keyword to search for
     printf("Type the Description you want to search for:\n");
     printf(STR_CURSOR);
-    freeTheBuffer();
     scanf("%[^\n]", descriptionKeyword);
+    freeTheBuffer();
 
     // performing the search, iterating over the whole POI collection
     for (i = 0; i < poiData.nElementi; ++i) {
@@ -324,8 +324,8 @@ void searchOutputCommonHandler(dynamicArray *poiData, dynamicArray *searchResult
         // Getting the file name to save into
         printf("Type the file name you want export to (Tip: naming the file .txt will help the OS to find an appropriate program to open the file )\n");
         printf(STR_CURSOR);
-        freeTheBuffer();
         scanf("%[^\n]", fileName);
+        freeTheBuffer();
 
         // create the file path based on the provided file name by adding the working directory to the name
         generateFilePath(fileName, filePath);

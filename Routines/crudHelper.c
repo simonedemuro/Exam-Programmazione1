@@ -21,7 +21,6 @@ void insertNewPoi(char* fileName, dynamicArray* poiData){
 
     // gaining attribute by attribute all the information mandatory for a new Poi to be added
     printf("Name: ");
-    getchar();
     scanf("%[^\n]", pointToBeAdded.name);
     // asking for latitude until the user enters a valid number (belonging to sardinia)
     printf("Latitude: ");
@@ -52,7 +51,7 @@ void insertNewPoi(char* fileName, dynamicArray* poiData){
         // opens the stream, saves to disk (eventually overriding), then closes the stream
         FILE* filePointer = openFile(fileName, "wb");
         salvaSuFileBinario(poiData, filePointer);
-        chiudiFile(filePointer);
+        filePointer = chiudiFile(filePointer);
     }
     //cleans the console to leave the output clean for the next window
     cleanConsole();
@@ -91,8 +90,8 @@ void editPoi(char* fileName, dynamicArray* poiData){
         case editName:
             printf("Type the new Name:\n");
             printf(STR_CURSOR);
-            freeTheBuffer();
             scanf("%[^\n]", poiData->v[poiToBeEditedIndex].name );
+            freeTheBuffer();
             break;
         case editLatitude:
             printf("Type the new Latitude:\n");
@@ -112,14 +111,14 @@ void editPoi(char* fileName, dynamicArray* poiData){
         case editMunicipality:
             printf("Type the new Municipality:\n");
             printf(STR_CURSOR);
-            getchar();
             scanf("%[^\n]", poiData->v[poiToBeEditedIndex].municipality );
+            freeTheBuffer();
             break;
         case editDescription:
             printf("Type the new Description:\n");
             printf(STR_CURSOR);
-            getchar();
             scanf("%[^\n]", poiData->v[poiToBeEditedIndex].description );
+            freeTheBuffer();
             break;
         case editCategory:
             printf(STR_LIST_CATEGORIES_ENUM);
@@ -137,7 +136,7 @@ void editPoi(char* fileName, dynamicArray* poiData){
         // opens the stream, saves to disk (eventually overriding), then closes the stream
         FILE* filePointer = openFile(fileName, "wb");
         salvaSuFileBinario(poiData, filePointer);
-        chiudiFile(filePointer);
+        filePointer = chiudiFile(filePointer);
     }
 
     // boyscout clean before leaving :D
@@ -175,7 +174,7 @@ void deletePoi(char* fileName, dynamicArray* poiData){
         // opens the stream, saves to disk (eventually overriding), then closes the stream
         FILE* filePointer = openFile(fileName, "wb");
         salvaSuFileBinario(poiData, filePointer);
-        chiudiFile(filePointer);
+        filePointer = chiudiFile(filePointer);
     }
 
     // boyscout clean before leaving :D
