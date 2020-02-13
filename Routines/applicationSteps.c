@@ -17,7 +17,7 @@ void startingMenu(){
     // clean the console to give a fresh start wherever we come from (reach this entry-point).
     cleanConsole();
     printf(STR_START_MENU);
-    int userAnswer = getNumericAnswerFromUser(2);
+    int userAnswer = getNumericAnswerFromUser(1);
 
     // as per printed enumeration runs the routine based on selected user input
     // even if the following snippet might have been simplified with an if, it haven't been for conformity wih the rest
@@ -214,7 +214,6 @@ void selectFile(char* message, char* filePath){
 
     // read user input spaces included the getChar is intended to free the buffer
     // Todo: find a fancier way to free the buffer
-    getchar();
     scanf("%[^\n]", fileName);
 
     // generating the file path (not only the name)

@@ -15,5 +15,7 @@ void cleanConsole();
 void printFilesLocallyStored();
 _Bool getYesNoAnswerFromUser();
 void freeTheBuffer();
+double getLongitudeAnswerFromUser();
+double getLatitudeAnswerFromUser();
 
 #endif //PROGETTOFINALEPOI_USERINTERFACEUTILS_H
