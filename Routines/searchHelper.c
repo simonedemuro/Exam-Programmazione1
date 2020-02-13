@@ -3,8 +3,7 @@
 //
 
 #include "searchHelper.h"
-#include "../Repository/pointOfInterestTextFileRepository.h"
-#include "../Repository/pointOfInterestBinaryFileRepository.h"
+
 
 
 int searchByCategory(char* fileName, dynamicArray poiData){
@@ -104,7 +103,7 @@ int searchByKeyword(char* fileName, dynamicArray poiData){
     for (i = 0; i < poiData.nElementi; ++i) {
         // whenever a point's description contains the given keyword it is added to the result
         // the following command is a contains (string.h)
-        if( strstr(strlwr(poiData.v[i].description), strlwr(descriptionKeyword)) != NULL ){
+        if( equalsIgnoreCase(poiData.v[i].description, descriptionKeyword) ){
             aggiungiElemento(&searchResult, poiData.v[i]);
         }
     }
@@ -278,20 +277,24 @@ void searchOutputCommonHandler(dynamicArray *poiData, dynamicArray *searchResult
     cleanConsole();
 }
 
-/*
- * If the compiler doesn't support strlwr uncomment
- * #include <string.h>
-#include<ctype.h>
 
-char *strlwr(char *str)
-{
-  unsigned char *p = (unsigned char *)str;
+/**
+ * compares two strings ignoring the casing
+ * @param firstStr string to be compared to the next given
+ * @param secondStr string to be compared to the previous one
+ * @return true if they are the same, false otherwise
+ */
+_Bool equalsIgnoreCase(char* firstStr, char* secondStr){
+    int i = 0;
+    // if they are not the same length they can't be the equal, returning false avoiding loop check
+    if( strlen(firstStr) != strlen(secondStr) )
+        return false;
 
-  while (*p) {
-     *p = tolower((unsigned char)*p);
-      p++;
-  }
-
-  return str;
+    // Assuming the strings to be the same length, checking them character by character ignoring the casing
+    for (i = 0; i < strlen(firstStr); ++i) {
+        if ( tolower(firstStr[i]) != tolower(secondStr[i]) )
+            return false;
+    }
+    // if this the code have been reached the strings are equal
+    return true;
 }
- * */
