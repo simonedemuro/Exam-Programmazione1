@@ -1,0 +1,7 @@
+INDEX: 0  Name: Poetto
+  Latitude: 39.213400
+  Longitude: 9.175700
+  altitude': 1.000000
+  Municipality: Cagliari
+  Description: Most famous beach for Cagliari Town
+  Category: beach
