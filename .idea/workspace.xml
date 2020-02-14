@@ -11,8 +11,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b20b7cd1-7599-46d7-b41d-69ac046cb239" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="b20b7cd1-7599-46d7-b41d-69ac046cb239" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Routines/crudHelper.h" beforeDir="false" afterPath="$PROJECT_DIR$/Routines/crudHelper.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Routines/searchHelper.c" beforeDir="false" afterPath="$PROJECT_DIR$/Routines/searchHelper.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Routines/searchHelper.h" beforeDir="false" afterPath="$PROJECT_DIR$/Routines/searchHelper.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/UI/userInterfaceUtils.c" beforeDir="false" afterPath="$PROJECT_DIR$/Utils/UI/userInterfaceUtils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProgettoFinalePOI.dir/Routines/applicationSteps.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProgettoFinalePOI.dir/Routines/applicationSteps.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProgettoFinalePOI.dir/Routines/crudHelper.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProgettoFinalePOI.dir/Routines/crudHelper.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProgettoFinalePOI.dir/Routines/searchHelper.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProgettoFinalePOI.dir/Routines/searchHelper.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProgettoFinalePOI.dir/Utils/UI/userInterfaceUtils.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ProgettoFinalePOI.dir/Utils/UI/userInterfaceUtils.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ProgettoFinalePOI" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ProgettoFinalePOI" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,23 +45,23 @@
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1XIdpPE8EoCkxXqCvKlelP1GHSu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/PROGETTO_FINALE" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="ProgettoFinalePOI" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ProgettoFinalePOI" TARGET_NAME="ProgettoFinalePOI" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ProgettoFinalePOI" RUN_TARGET_NAME="ProgettoFinalePOI">
@@ -81,6 +91,8 @@
       <workItem from="1581442304135" duration="5984000" />
       <workItem from="1581514609088" duration="12627000" />
       <workItem from="1581610983278" duration="137000" />
+      <workItem from="1581612856089" duration="496000" />
+      <workItem from="1581695693512" duration="3059000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1580744112487</created>
@@ -111,5 +123,88 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581612872165">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-207.-1080.1920.1080@0.0.1440.900" timestamp="1581612872165" />
+    <state x="483" y="144" key="#xdebugger.evaluate" timestamp="1581698734752">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state x="483" y="144" key="#xdebugger.evaluate/0.23.1440.823@0.23.1440.823" timestamp="1581698734752" />
+    <state width="564" height="466" key="DebuggerActiveHint" timestamp="1581698421782">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="564" height="466" key="DebuggerActiveHint/0.23.1440.823@0.23.1440.823" timestamp="1581698421782" />
+    <state width="1398" height="263" key="GridCell.Tab.0.bottom" timestamp="1581698553532">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.0.bottom/0.0.1440.900/-207.-1080.1920.1080@0.0.1440.900" timestamp="1581612987116" />
+    <state width="1398" height="263" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1581695975517" />
+    <state width="1398" height="263" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1581698553532" />
+    <state width="1398" height="263" key="GridCell.Tab.0.center" timestamp="1581698553531">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.0.center/0.0.1440.900/-207.-1080.1920.1080@0.0.1440.900" timestamp="1581612987114" />
+    <state width="1398" height="263" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1581695975515" />
+    <state width="1398" height="263" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1581698553531" />
+    <state width="1398" height="263" key="GridCell.Tab.0.left" timestamp="1581698553531">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.0.left/0.0.1440.900/-207.-1080.1920.1080@0.0.1440.900" timestamp="1581612987112" />
+    <state width="1398" height="263" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1581695975514" />
+    <state width="1398" height="263" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1581698553531" />
+    <state width="1398" height="263" key="GridCell.Tab.0.right" timestamp="1581698553532">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.0.right/0.0.1440.900/-207.-1080.1920.1080@0.0.1440.900" timestamp="1581612987115" />
+    <state width="1398" height="263" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1581695975516" />
+    <state width="1398" height="263" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1581698553532" />
+    <state width="1398" height="263" key="GridCell.Tab.1.bottom" timestamp="1581698659001">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1398" height="263" key="GridCell.Tab.1.bottom/0.23.1440.822@0.23.1440.822" timestamp="1581695975519" />
+    <state width="1398" height="263" key="GridCell.Tab.1.bottom/0.23.1440.823@0.23.1440.823" timestamp="1581698659001" />
+    <state width="1398" height="263" key="GridCell.Tab.1.center" timestamp="1581698658998">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1398" height="263" key="GridCell.Tab.1.center/0.23.1440.822@0.23.1440.822" timestamp="1581695975517" />
+    <state width="1398" height="263" key="GridCell.Tab.1.center/0.23.1440.823@0.23.1440.823" timestamp="1581698658998" />
+    <state width="1398" height="263" key="GridCell.Tab.1.left" timestamp="1581698658998">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1398" height="263" key="GridCell.Tab.1.left/0.23.1440.822@0.23.1440.822" timestamp="1581695975517" />
+    <state width="1398" height="263" key="GridCell.Tab.1.left/0.23.1440.823@0.23.1440.823" timestamp="1581698658998" />
+    <state width="1398" height="263" key="GridCell.Tab.1.right" timestamp="1581698658999">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1398" height="263" key="GridCell.Tab.1.right/0.23.1440.822@0.23.1440.822" timestamp="1581695975518" />
+    <state width="1398" height="263" key="GridCell.Tab.1.right/0.23.1440.823@0.23.1440.823" timestamp="1581698658999" />
+    <state x="399" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1581695699681">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="399" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-207.-1080.1920.1080@0.0.1440.900" timestamp="1581612855874" />
+    <state x="399" y="281" key="com.intellij.ide.util.TipDialog/0.23.1440.822@0.23.1440.822" timestamp="1581695699681" />
+    <state x="386" y="191" width="667" height="486" key="find.popup" timestamp="1581697142576">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state x="386" y="191" width="667" height="486" key="find.popup/0.23.1440.823@0.23.1440.823" timestamp="1581697142576" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Routines/searchHelper.c</url>
+          <line>111</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Routines/searchHelper.c</url>
+          <line>107</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

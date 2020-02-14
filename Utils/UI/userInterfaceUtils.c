@@ -151,7 +151,7 @@ void printFilesLocallyStored(){
 
     // the command just sent to the os will be prompted to make it more transparent
     printf("\n");
-    printf(command);
+    printf("%s", command);
     printf("\n");
     // runs the system command (DIR under windows or ls under linux and Mac)
     // the effect in both will be to print a list of the available file on the save folder.

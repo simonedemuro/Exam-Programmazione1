@@ -20,6 +20,7 @@
 #include "sortHelper.h"
 #include "../Repository/pointOfInterestTextFileRepository.h"
 #include "../Repository/pointOfInterestBinaryFileRepository.h"
+#include "crudHelper.h"
 
 
 /*search menus*/

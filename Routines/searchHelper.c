@@ -5,7 +5,6 @@
 #include "searchHelper.h"
 
 
-
 int searchByCategory(char* fileName, dynamicArray poiData){
     /* declarative space, the variable names in use are long and self-explaintory */
     int categoryToSearchFrom = 0;
@@ -86,9 +85,13 @@ int searchByMunicipe(char* fileName, dynamicArray poiData){
 }
 int searchByKeyword(char* fileName, dynamicArray poiData){
     /* declarative space, the variable names in use are long and self-explaintory */
-    char descriptionKeyword[MEDIUM_STRING];
+    char descriptionKeywordToSearchFor[MEDIUM_STRING];
     int i = 0; // for loop index
     dynamicArray searchResult;
+    // arguments but lowercase
+    char currentPoiDescriptionLowercase[MEDIUM_STRING];
+    char descriptionKeywordToSearchForLowercase[MEDIUM_STRING];
+
 
     // initializing the vector
     initDynamicVector(&searchResult);
@@ -96,14 +99,17 @@ int searchByKeyword(char* fileName, dynamicArray poiData){
     // Prompting a message and asking for the descriprion keyword to search for
     printf("Type the Description you want to search for:\n");
     printf(STR_CURSOR);
-    scanf("%[^\n]", descriptionKeyword);
+    scanf("%[^\n]", descriptionKeywordToSearchFor);
     freeTheBuffer();
 
     // performing the search, iterating over the whole POI collection
     for (i = 0; i < poiData.nElementi; ++i) {
+        // lowercasing the search arguments given
+        strToLowercase(descriptionKeywordToSearchFor, descriptionKeywordToSearchForLowercase);
+        strToLowercase(poiData.v[i].description, currentPoiDescriptionLowercase);
         // whenever a point's description contains the given keyword it is added to the result
-        // the following command is a contains (string.h)
-        if( equalsIgnoreCase(poiData.v[i].description, descriptionKeyword) ){
+        // the following command is a contains (string.h) different than NULL means it is contained 1
+        if( strstr(descriptionKeywordToSearchForLowercase, currentPoiDescriptionLowercase) != NULL ){
             aggiungiElemento(&searchResult, poiData.v[i]);
         }
     }
@@ -355,4 +361,11 @@ _Bool equalsIgnoreCase(char* firstStr, char* secondStr){
     }
     // if this the code have been reached the strings are equal
     return true;
+}
+
+void strToLowercase(char* src, char* dest){
+    int i;
+    for (i = 0; i < strlen(src) - 1; ++i) {
+        dest[i] = (char)tolower(src[i]);
+    }
 }
