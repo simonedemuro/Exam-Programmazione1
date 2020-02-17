@@ -109,7 +109,7 @@ int searchByKeyword(char* fileName, dynamicArray poiData){
         strToLowercase(poiData.v[i].description, currentPoiDescriptionLowercase);
         // whenever a point's description contains the given keyword it is added to the result
         // the following command is a contains (string.h) different than NULL means it is contained 1
-        if( strstr(descriptionKeywordToSearchForLowercase, currentPoiDescriptionLowercase) != NULL ){
+        if( strstr(currentPoiDescriptionLowercase, descriptionKeywordToSearchForLowercase) != NULL ){
             aggiungiElemento(&searchResult, poiData.v[i]);
         }
     }
@@ -295,7 +295,7 @@ void searchOutputCommonHandler(dynamicArray *poiData, dynamicArray *searchResult
 
 
     // showing the fetched data
-    printf("Here is the list of Point of Interests filtered by your criteria\n");
+    printf("Here is the list of Point of Interests filtered by your criteria\n\n");
     for (i = 0; i < (*searchResult).nElementi; ++i) {
         printf("INDEX: %d", i);
         printElement((*searchResult).v[i]);
@@ -365,7 +365,9 @@ _Bool equalsIgnoreCase(char* firstStr, char* secondStr){
 
 void strToLowercase(char* src, char* dest){
     int i;
-    for (i = 0; i < strlen(src) - 1; ++i) {
+    for (i = 0; i < strlen(src) ; ++i) {
         dest[i] = (char)tolower(src[i]);
     }
+    // adding string terminator
+    dest[i+1] = '\0';
 }

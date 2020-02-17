@@ -33,6 +33,7 @@ void printPoiArray(dynamicArray d){
     for (i = 0; i < d.nElementi; ++i) {
         printf("INDEX: %d", i);
         printElement(d.v[i]);
+        printf("\n");
     }
     // prints a new line in order to make the next menu easier to read
     printf("\n");
