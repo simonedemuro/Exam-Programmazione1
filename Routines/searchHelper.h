@@ -21,6 +21,7 @@
 #include "../Repository/pointOfInterestTextFileRepository.h"
 #include "../Repository/pointOfInterestBinaryFileRepository.h"
 #include "crudHelper.h"
+#include <math.h>
 
 
 /*search menus*/

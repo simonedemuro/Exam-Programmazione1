@@ -33,6 +33,13 @@ int getNumericAnswerFromUser(int maxOptionAvailable){
     return userAnswer;
 }
 
+
+/**
+ * This function helps to get a valid latitude from the user (between MIN_SARDINIAN_LATITUDE, MAX_SARDINIAN_LATITUDE)
+ * and prints a hint in case the user inadvisedly inserts a wrong Latitude
+ *
+ * @return a valid Sardinian DOC latitude
+ */
 double getLatitudeAnswerFromUser(){
     double userAnswer = -1;
     _Bool isSardinianLatitude;
@@ -41,6 +48,7 @@ double getLatitudeAnswerFromUser(){
     do {
         printf(STR_CURSOR);
         scanf("%lf", &userAnswer);
+        freeTheBuffer();
         // checks if the value is between 1 and the maximum option available for this command
         isSardinianLatitude = (userAnswer >= MIN_SARDINIAN_LATITUDE && userAnswer <= MAX_SARDINIAN_LATITUDE);
 
@@ -53,7 +61,12 @@ double getLatitudeAnswerFromUser(){
     return userAnswer;
 }
 
-
+/**
+ * This function helps to get a valid Longitude from the user (between  MIN_SARDINIAN_LONGITUDE, MAX_SARDINIAN_LONGITUDE)
+ * and prints a hint in case the user inadvisedly inserts a wrong Longitude
+ *
+ * @return a valid Sardinian DOC Longitude
+ */
 double getLongitudeAnswerFromUser(){
     double userAnswer = -1;
     _Bool isSardinianLingitude;
@@ -62,6 +75,7 @@ double getLongitudeAnswerFromUser(){
     do {
         printf(STR_CURSOR);
         scanf("%lf", &userAnswer);
+        freeTheBuffer();
         // checks if the value is between 1 and the maximum option available for this command
         isSardinianLingitude = (userAnswer >= MIN_SARDINIAN_LONGITUDE && userAnswer <= MAX_SARDINIAN_LONGITUDE);
 
@@ -130,19 +144,19 @@ void cleanConsole(){
 }
 
 /**
- *
+ * This Routine prints the file present on the disk in order to make easier for the user to pick a file
+ * This Routin makes use of a system call based on the OS currently in use at compile time
  */
 void printFilesLocallyStored(){
     char command[100];
 
-    // set the correct syscall for the os in use
+    // set the correct syscall for the os in use by copying a string into the command that will be sent to OS
 #ifdef __linux__
     strcpy(command, "ls ");
 #elif _WIN32
     strcpy(command, "DIR ");
 #else
-    // todo: not sure how to list on mac
-    // otherwise we are under mac
+    // otherwise we are under mac or smething misterious like a BSD
     strcpy(command, "ls ");
 #endif
 
@@ -170,7 +184,10 @@ void handledError(){
     startingMenu();
 }
 
-
+/**
+ * Usage: put this function after scanf so that the next one will have a clean stream
+ * in particular the invisible enemies.. the "\n"
+ */
 void freeTheBuffer(){
     while ( getchar() != '\n' );
 }

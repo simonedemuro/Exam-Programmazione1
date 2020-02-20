@@ -22,6 +22,7 @@ void insertNewPoi(char* fileName, dynamicArray* poiData){
     // gaining attribute by attribute all the information mandatory for a new Poi to be added
     printf("Name: ");
     scanf("%[^\n]", pointToBeAdded.name);
+    freeTheBuffer();
     // asking for latitude until the user enters a valid number (belonging to sardinia)
     printf("Latitude: ");
     pointToBeAdded.latitude = getLatitudeAnswerFromUser();
@@ -30,19 +31,20 @@ void insertNewPoi(char* fileName, dynamicArray* poiData){
     pointToBeAdded.longitude = getLongitudeAnswerFromUser();
     printf("Altitude: ");
     scanf("%lf", &pointToBeAdded.altitude);
+    freeTheBuffer();
     printf("Municipality: ");
-    getchar();
     scanf("%[^\n]", pointToBeAdded.municipality);
+    freeTheBuffer();
     printf("Description: ");
-    getchar();
     scanf("%[^\n]", pointToBeAdded.description);
+    freeTheBuffer();
     // The category enmumerative type is handled as a number,
     // printing a category enumerator resume to make him able to chose one by number
     printf(STR_LIST_CATEGORIES_ENUM);
     pointToBeAdded.category = getNumericAnswerFromUser(8);
 
     // adding the newly generated Poi in memory
-    aggiungiElemento(poiData, pointToBeAdded);
+    addItem(poiData, pointToBeAdded);
 
     // ask if the user wants to save and acts accordingly
     printf(STR_SAVE_WARNING);
@@ -107,6 +109,7 @@ void editPoi(char* fileName, dynamicArray* poiData){
             printf("Type the new Altitude:\n");
             printf(STR_CURSOR);
             scanf("%lf", &poiData->v[poiToBeEditedIndex].altitude );
+            freeTheBuffer();
             break;
         case editMunicipality:
             printf("Type the new Municipality:\n");

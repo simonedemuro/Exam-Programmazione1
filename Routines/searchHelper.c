@@ -4,7 +4,14 @@
 
 #include "searchHelper.h"
 
-
+/**
+ * Performs a search by category meaning
+ * Given a category to search for, returns every Poi in the array that matches the category
+ *
+ * @param fileName is the filename in use
+ * @param poiData is the data in which to search
+ * @return the number of matching POIs
+ */
 int searchByCategory(char* fileName, dynamicArray poiData){
     /* declarative space, the variable names in use are long and self-explaintory */
     int categoryToSearchFrom = 0;
@@ -24,7 +31,7 @@ int searchByCategory(char* fileName, dynamicArray poiData){
     for (i = 0; i < poiData.nElementi; ++i) {
         // whenever a point belongs to a Category it is added to the result collection that will be shown next
         if(poiData.v[i].category == categoryToSearchFrom){
-            aggiungiElemento(&searchResult, poiData.v[i]);
+            addItem(&searchResult, poiData.v[i]);
         }
     }
 
@@ -46,7 +53,7 @@ int searchByCategory(char* fileName, dynamicArray poiData){
  *  This function makes use of strcasecmp see https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.bpxbd00/rsrccm.htm
  * @param fileName
  * @param poiData
- * @return
+ * @return the number of matching POIs
  */
 int searchByMunicipe(char* fileName, dynamicArray poiData){
     /* declarative space, the variable names in use are long and self-explaintory */
@@ -67,7 +74,7 @@ int searchByMunicipe(char* fileName, dynamicArray poiData){
     for (i = 0; i < poiData.nElementi; ++i) {
         // whenever a point matches a Municipe (Case insensitive) it is added to the result collection that will be shown next
         if( strcasecmp(poiData.v[i].municipality, municipeToChoseFrom) == 0){
-            aggiungiElemento(&searchResult, poiData.v[i]);
+            addItem(&searchResult, poiData.v[i]);
         }
     }
 
@@ -83,6 +90,14 @@ int searchByMunicipe(char* fileName, dynamicArray poiData){
 
     return searchResult.nElementi;
 }
+
+/**
+ * This routine performs a search inside of the Poi's description,
+ * It matches every POI that contains the given word inside of the description ignoring casing
+ * @param fileName is the file name actually in use
+ * @param poiData is the data in use
+ * @return the number of matching POIs
+ */
 int searchByKeyword(char* fileName, dynamicArray poiData){
     /* declarative space, the variable names in use are long and self-explaintory */
     char descriptionKeywordToSearchFor[MEDIUM_STRING];
@@ -110,7 +125,7 @@ int searchByKeyword(char* fileName, dynamicArray poiData){
         // whenever a point's description contains the given keyword it is added to the result
         // the following command is a contains (string.h) different than NULL means it is contained 1
         if( strstr(currentPoiDescriptionLowercase, descriptionKeywordToSearchForLowercase) != NULL ){
-            aggiungiElemento(&searchResult, poiData.v[i]);
+            addItem(&searchResult, poiData.v[i]);
         }
     }
 
@@ -151,6 +166,7 @@ int searchByGeographicalLocation(char* fileName, dynamicArray poiData){
     // Asks for the radious of the search to be performed
     printf("Type the radious you want use to circumscribe your search: \n");
     scanf("%lf", &radiusOfTheSearch);
+    freeTheBuffer();
 
     // performing the search, iterating over the whole POI collection
     for (i = 0; i < poiData.nElementi; ++i) {
@@ -160,7 +176,7 @@ int searchByGeographicalLocation(char* fileName, dynamicArray poiData){
 
         // whenever a point's distance is lower or equal to the given radius (is close enough) it is added to results
         if( calculatedDistance <= radiusOfTheSearch ){
-            aggiungiElemento(&searchResult, poiData.v[i]);
+            addItem(&searchResult, poiData.v[i]);
         }
     }
 
@@ -180,7 +196,7 @@ int searchByGeographicalLocation(char* fileName, dynamicArray poiData){
 /**
  * This funciton calculates the distance between two points <(latA, lonA),(latB, lonB)>
  * This functions is a refactored version of the following:
- * Credits & Further docs: https://www.spadamar.com/2007/12/calcolo-della-distanza-geodetica-tra-due-punti-della-superficie-terrestre/
+ * Further lectures: https://www.geeksforgeeks.org/program-distance-two-points-earth/
  * @param latA first point latitude
  * @param lonA first point longitude
  * @param latB second point latitude
@@ -189,26 +205,25 @@ int searchByGeographicalLocation(char* fileName, dynamicArray poiData){
  */
 double geoDistance (double latA, double lonA, double latB, double lonB)
 {
-    /* Defining the Constants  */
-    double lat_alfa, lat_beta;
-    double lon_alfa, lon_beta;
+    // Defining the Constants
+    double radiantLatA, radiantLatB, radiantLonA, radiantLonB;
     double fi;
     double angleIncluded, distance;
 
-    /* Degrees to radiants */
-    lat_alfa = M_PI * latA / 180;
-    lat_beta = M_PI * latB / 180;
-    lon_alfa = M_PI * lonA / 180;
-    lon_beta = M_PI * lonB / 180;
-    /* Calcola l'angolo compreso fi */
-    fi = fabs(lon_alfa - lon_beta);
-    /* Calcola il terzo lato del triangolo sferico */
-    angleIncluded = acos(sin(lat_beta) * sin(lat_alfa) +
-             cos(lat_beta) * cos(lat_alfa) * cos(fi));
-    /* Calcola la distanza sulla superficie*/
+    // Degrees to radiants
+    radiantLatA = M_PI * latA / 180;
+    radiantLatB = M_PI * latB / 180;
+    radiantLonA = M_PI * lonA / 180;
+    radiantLonB = M_PI * lonB / 180;
+    // Calculating the angle between the axes
+    fi = fabs(radiantLonA - radiantLonB);
+    // Calcola il terzo lato del triangolo sferico
+    angleIncluded = acos(sin(radiantLatB) * sin(radiantLatA) +
+                         cos(radiantLatB) * cos(radiantLatA) * cos(fi));
+    // Calculating the actual distance
     distance = angleIncluded * EARTH_RADIOUS;
 
-    return(distance);
+    return distance;
 }
 
 /**
@@ -247,6 +262,13 @@ altitudeEnum getPoiAltitudeEnumByPoi(PointOfInterest p){
     return mountain;
 }
 
+/**
+ * This routine compares the altitudes of the pois and returns the one with the
+ * altitude the user is searching for
+ * @param fileName
+ * @param poiData
+ * @return
+ */
 int searchByAltitude(char* fileName, dynamicArray poiData){
     /* declarative space, the variable names in use are long and self-explaintory */
     altitudeEnum selectedAltitude;
@@ -264,7 +286,7 @@ int searchByAltitude(char* fileName, dynamicArray poiData){
     for (i = 0; i < poiData.nElementi; ++i) {
         // If the poi's altitude is equal to the user's selected one add it to the result output
         if( getPoiAltitudeEnumByPoi(poiData.v[i]) == selectedAltitude ){
-            aggiungiElemento(&searchResult, poiData.v[i]);
+            addItem(&searchResult, poiData.v[i]);
         }
     }
 
@@ -281,6 +303,12 @@ int searchByAltitude(char* fileName, dynamicArray poiData){
     return searchResult.nElementi;
 }
 
+
+/**
+ * This routine is common to all search procedures and is the one responsible for
+ * @param poiData
+ * @param searchResult
+ */
 void searchOutputCommonHandler(dynamicArray *poiData, dynamicArray *searchResult) {
     // for counter
     int i = 0;
@@ -363,6 +391,11 @@ _Bool equalsIgnoreCase(char* firstStr, char* secondStr){
     return true;
 }
 
+/**
+ *  This function given two strings writes the second one with the first one content to lowercase
+ * @param src source string
+ * @param dest is the result (src) to lowercase
+ */
 void strToLowercase(char* src, char* dest){
     int i;
     for (i = 0; i < strlen(src) ; ++i) {

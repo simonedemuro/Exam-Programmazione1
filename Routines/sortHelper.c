@@ -26,6 +26,10 @@ void sortPoiData(dynamicArray* poiData, sortTypeEnum sortType){
     }
 }
 
+/**
+ * Private ascending sort wrapped in the routine above
+ * @param poiData
+ */
 void _poiDataSortAsc(dynamicArray* poiData){
     int i, j, idxMin;
     PointOfInterest min;
@@ -48,6 +52,10 @@ void _poiDataSortAsc(dynamicArray* poiData){
     }
 }
 
+/**
+ * private descending sort wrapped by sortPoiData
+ * @param poiData
+ */
 void _poiDataSortDesc(dynamicArray* poiData){
     int i, j, idxMax;
     PointOfInterest min;

@@ -16,6 +16,9 @@
 void startingMenu(){
     // clean the console to give a fresh start wherever we come from (reach this entry-point).
     cleanConsole();
+
+    // prints a draw and the menu
+    printf(STR_APP_HEADER);
     printf(STR_START_MENU);
     int userAnswer = getNumericAnswerFromUser(1);
 
@@ -95,7 +98,6 @@ void loadProjectMenu(){
         // if the file does not exists print a warning and ask again
         if(!fileExists){
             printf("The file selected does not exists, please type a valid one from the list above:\n");
-            printf(STR_CURSOR);
         }
     } while(!fileExists);
 
@@ -213,8 +215,8 @@ void selectFile(char* message, char* filePath){
     printf(STR_CURSOR);
 
     // read user input spaces included the getChar is intended to free the buffer
-    // Todo: find a fancier way to free the buffer
     scanf("%[^\n]", fileName);
+    freeTheBuffer();
 
     // generating the file path (not only the name)
     generateFilePath(fileName, filePath);

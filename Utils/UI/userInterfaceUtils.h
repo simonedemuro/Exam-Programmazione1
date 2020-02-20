@@ -9,6 +9,7 @@
 #include <stdbool.h>
 #include "../../Resources/stringStatic.h"
 
+
 int getNumericAnswerFromUser(int maxOptionAvailable);
 void handledError();
 void cleanConsole();

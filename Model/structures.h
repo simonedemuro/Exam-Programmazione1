@@ -45,7 +45,7 @@ typedef enum {
 } searchMenuEnumeration;
 
 /**
- * This enum is used to avoid magic numbers in the
+ * This enum is used to confrontaPointOfInterestsavoid magic numbers in the
  * applications's edit menu
  */
 typedef enum {

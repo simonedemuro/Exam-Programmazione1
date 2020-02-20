@@ -41,4 +41,12 @@
 
 #define STR_NO_DATA_FOUND "No Data retrieved, try changing the filtering criteria\n"
 
+#define STR_APP_HEADER "\
+                            ____  ____  ____\n\
+                           / __ \\/ __ \\/  _/\n\
+   progetto finale pr1:   / /_/ / / / // /  \n\
+                         / ____/ /_/ // /   \n\
+                        /_/    \\____/___/   \n\n\
+"
+
 #endif //PROGETTOFINALEPOI_STRINGSTATIC_H
