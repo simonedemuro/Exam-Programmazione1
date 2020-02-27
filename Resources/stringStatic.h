@@ -4,7 +4,6 @@
 // it might be useful in order to change the strings in one centralized place and helps in order to avoid
 // repeating them directly in the code
 //
-// Todo: ask if this is a good idea
 
 #ifndef PROGETTOFINALEPOI_STRINGSTATIC_H
 #define PROGETTOFINALEPOI_STRINGSTATIC_H

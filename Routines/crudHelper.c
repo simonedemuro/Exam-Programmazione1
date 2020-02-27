@@ -41,7 +41,7 @@ void insertNewPoi(char* fileName, dynamicArray* poiData){
     // The category enmumerative type is handled as a number,
     // printing a category enumerator resume to make him able to chose one by number
     printf(STR_LIST_CATEGORIES_ENUM);
-    pointToBeAdded.category = getNumericAnswerFromUser(8);
+    pointToBeAdded.category = getNumericAnswerFromUser(7);
 
     // adding the newly generated Poi in memory
     addItem(poiData, pointToBeAdded);
@@ -125,7 +125,7 @@ void editPoi(char* fileName, dynamicArray* poiData){
             break;
         case editCategory:
             printf(STR_LIST_CATEGORIES_ENUM);
-            poiData->v[poiToBeEditedIndex].category = getNumericAnswerFromUser(8);
+            poiData->v[poiToBeEditedIndex].category = getNumericAnswerFromUser(7);
             break;
         default:
             handledError();

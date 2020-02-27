@@ -55,6 +55,7 @@ void newProjectMenu(){
 
     // clean the console for better visualization and asking the user to type a file name and clears again
     cleanConsole();
+    printf("Type the project Name: ");
     selectFile(STR_1_NEW_PROJECT, filePath);
     cleanConsole();
 

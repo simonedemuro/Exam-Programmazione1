@@ -3,6 +3,7 @@
 //
 
 #include <stdlib.h> // used to call system calls
+#include <time.h>
 #include "userInterfaceUtils.h"
 #include "../../Routines/applicationSteps.h"
 #include "../../Routines/searchHelper.h"
@@ -14,7 +15,7 @@
  * @return returns a valid enumeration from the user input (between 0 and maxOptionAvailable)
  */
 int getNumericAnswerFromUser(int maxOptionAvailable){
-    int userAnswer = -1; //Todo: ask if it might be changed to unsigned int
+    int userAnswer = -1;
     _Bool invalidInputEntered;
 
     // Asks for an option until it gets entered correctly
@@ -123,7 +124,6 @@ _Bool getYesNoAnswerFromUser(){
 }
 
 
-//Todo: refactor this mess and conditionally compile the functions you want to have depending on the operative system
 //instead of repeating the condition inside them
 
 /**
@@ -141,6 +141,14 @@ void cleanConsole(){
     // https://stackoverflow.com/questions/2198377/how-to-clear-previous-output-in-terminal-in-mac-os-x
     system("clear");
 #endif
+
+    // Dealy of 150 Milli seconds to avoid weird behavior with the Clion console that seems to perform
+    // system calls asynchronously
+
+    clock_t startTime = clock();
+    // looping till required time is not achieved
+    while (clock() < startTime + 150 )
+        ;
 }
 
 /**

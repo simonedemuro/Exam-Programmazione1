@@ -25,7 +25,7 @@ int searchByCategory(char* fileName, dynamicArray poiData){
     printf(STR_LIST_CATEGORIES_ENUM);
 
     // gets the category from the user using the usual integer acquisition procedure
-    categoryToSearchFrom = getNumericAnswerFromUser(8);
+    categoryToSearchFrom = getNumericAnswerFromUser(7);
 
     // performing the search, iterating over the whole POI collection
     for (i = 0; i < poiData.nElementi; ++i) {
